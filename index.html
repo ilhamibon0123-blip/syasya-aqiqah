@@ -139,24 +139,70 @@
 </section>
 
 <section class="section" id="katalog">
-  <h2>Paket Aqiqah</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/300">
-      <h3>Paket Hemat</h3>
+  <style>
+    .slider { position:relative; overflow:hidden; }
+    .slides { display:flex; transition:0.5s; }
+    .slide { min-width:100%; box-sizing:border-box; }
+    .slide .grid { grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+    .nav-btn {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:#ff7a00; color:#fff; border:none; padding:10px 15px;
+      cursor:pointer; border-radius:50%;
+    }
+    .prev { left:10px; }
+    .next { right:10px; }
+  </style>
+
+  <div class="slider">
+    <div class="slides" id="slides">
+
+      <!-- Slide 1: Laki -->
+      <div class="slide">
+        <h3>👶 Paket Anak Laki-Laki</h3>
+        <div class="grid">
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Laki 1</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Laki 2</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Laki 3 ⭐</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Laki 4</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Laki 5</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Laki 6</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Laki 7</h4></div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Perempuan -->
+      <div class="slide">
+        <h3>👶 Paket Anak Perempuan</h3>
+        <div class="grid">
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Perempuan 1</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Perempuan 2</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Perempuan 3 ⭐</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Perempuan 4</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Perempuan 5</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Perempuan 6</h4></div>
+          <div class="card"><img src="https://via.placeholder.com/300"><h4>Paket Perempuan 7</h4></div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="card highlight">
-      <img src="https://via.placeholder.com/300">
-      <h3>Paket Favorit ⭐</h3>
-      <p>Paling banyak dipilih</p>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300">
-      <h3>Paket Premium</h3>
-    </div>
+    <button class="nav-btn prev" onclick="prevSlide()">❮</button>
+    <button class="nav-btn next" onclick="nextSlide()">❯</button>
   </div>
+
+  <script>
+    let index = 0;
+    function showSlide(i){
+      const slides = document.getElementById('slides');
+      const total = slides.children.length;
+      if(i >= total) index = 0;
+      else if(i < 0) index = total - 1;
+      else index = i;
+      slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+    }
+    function nextSlide(){ showSlide(index + 1); }
+    function prevSlide(){ showSlide(index - 1); }
+  </script>
 </section>
 
 <section class="section why" id="kenapa">
